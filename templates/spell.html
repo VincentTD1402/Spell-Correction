@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block main %}
+<head>
+  <h3>Spell Corrector</h3>
+  <h4><br /></h4>
+</head>
+
+<div class="container">
+  <form method="POST" action="/spell" enctype="multipart/form-data">
+    <div class="form-group">
+      <label>Put your text here</label>
+      <textarea type="text" rows="5" cols="5" class="form-control" name="rawtext"></textarea>
+      <br/>
+      <br/>
+      <button type="reset" class="btn btn-primary"><i class="fa fa-eraser"></i> Clear</button>
+      <button type="submit" class="btn btn-info"><i class="fa fa-database"></i> Submit</button>
+      <input type="file" id="fileInput" name="uploadedFile" accept=".txt,.doc,.docx" style="display: none;">
+      <button type="button" onclick="chooseFile()" class="btn btn-info"><i class="fa fa-upload"></i> Upload</button>
+      <span id="fileName"></span>
+    </div>
+  </form>
+</div>
+<br/>
+<div class="container">
+  <div class="alert alert-success" role="alert">
+    <p class="input">Your input text:</p>
+    <div>{{raw_text}}</div>
+    <p class="alert-heading">Corrected text:</p>
+    <div>{{results}}</div>
+    <br />
+  </div>
+</div>
+<br />
+<footer class="small text-center text-muted">
+  Made by Tran Dinh Hien- k18-DTVT-DUT
+</footer>
+
+<script>
+  function chooseFile() {
+    document.getElementById('fileInput').click();
+  }
+
+  document.getElementById('fileInput').addEventListener('change', function() {
+    var fileInput = document.getElementById('fileInput');
+    var fileName = document.getElementById('fileName');
+    fileName.textContent = fileInput.files[0].name;
+  });
+</script>
+{% endblock %}
