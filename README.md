@@ -1,4 +1,4 @@
- # Vietnamese spell corrector and text classifier 
+ # Vietnamese spell correction
 
  #### Windows
  
